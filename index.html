@@ -111,9 +111,9 @@
         <section id="contacto" class="contact">
             <h2>Contacto</h2>
             <form id="contact-form">
-                <input type="text" placeholder="Nombre" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Mensaje" required></textarea>
+                <input type="text" name="from_name" placeholder="Nombre" required>
+                <input type="email" name="from_email" placeholder="Email" required>
+                <textarea name="message" placeholder="Mensaje" required></textarea>
                 <button type="submit">Enviar</button>
             </form>
         </section>
@@ -123,6 +123,7 @@
         <p>&copy; 2025 Portafolio de Joaquín Segura Illana. Todos los derechos reservados.</p>
     </footer>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

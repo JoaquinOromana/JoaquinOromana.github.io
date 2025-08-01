@@ -1,5 +1,7 @@
 // Animación de las barras de progreso de habilidades
 document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar EmailJS
+    emailjs.init('G4kBg2ykXOLnw5A2C'); // Reemplazar con tu clave pública de EmailJS
     // Animar barras de progreso
     const progressBars = document.querySelectorAll('.progress');
     progressBars.forEach(bar => {
@@ -65,9 +67,24 @@ document.addEventListener('DOMContentLoaded', () => {
     formularioContacto.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Aquí agregamos la lógica para enviar el formulario
-        alert('¡Gracias por tu mensaje! Te contactaré pronto.');
-        formularioContacto.reset();
+        // Obtener los datos del formulario
+        const formData = new FormData(formularioContacto);
+        const templateParams = {
+            from_name: formData.get('from_name'),
+            from_email: formData.get('from_email'),
+            message: formData.get('message'),
+            to_email: 'j.segura.illana@gmail.com'
+        };
+        
+        // Enviar email usando EmailJS
+        emailjs.send('service_lhjl2ot', 'template_9e9wtoo', templateParams)
+            .then(function(response) {
+                alert('¡Mensaje enviado exitosamente! Le contactaré pronto, un saludo.');
+                formularioContacto.reset();
+            }, function(error) {
+                alert('Error al enviar el mensaje. Por favor, inténtalo de nuevo.');
+                console.error('Error:', error);
+            });
     });
 
     // Navegación suave
